@@ -1,4 +1,4 @@
-// 🔥 Your Firebase Configuration
+// ✅ Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBdxGoyceOa5t4JBTgHhQdDtAVMZRevV2E",
   authDomain: "relay-control-e746d.firebaseapp.com",
@@ -12,26 +12,39 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database(app);
-const relayStatusRef = database.ref("relay/status");
+const db = firebase.database(app);
+const relayRef = db.ref("relay/status");
 
-// Elements
-const statusEl = document.getElementById("status");
+// DOM Elements
+const indicator = document.getElementById("indicator");
+const statusText = document.getElementById("statusText");
 const onBtn = document.getElementById("onBtn");
 const offBtn = document.getElementById("offBtn");
 
-// Listen for status updates
-relayStatusRef.on("value", (snapshot) => {
-  const state = snapshot.val();
-  statusEl.textContent = state ? state.toUpperCase() : "UNKNOWN";
-  statusEl.style.color = state === "ON" ? "#00ff88" : "#ff5555";
+// Listen for realtime database changes
+relayRef.on("value", (snapshot) => {
+  const value = snapshot.val();
+  if (value === "ON") {
+    indicator.classList.add("on");
+    indicator.classList.remove("off");
+    statusText.textContent = "ON";
+    statusText.style.color = "#00e676";
+  } else if (value === "OFF") {
+    indicator.classList.add("off");
+    indicator.classList.remove("on");
+    statusText.textContent = "OFF";
+    statusText.style.color = "#f44336";
+  } else {
+    statusText.textContent = "UNKNOWN";
+    statusText.style.color = "#ffeb3b";
+  }
 });
 
-// Button events
+// Write ON/OFF to Firebase
 onBtn.addEventListener("click", () => {
-  relayStatusRef.set("ON");
+  relayRef.set("ON");
 });
 
 offBtn.addEventListener("click", () => {
-  relayStatusRef.set("OFF");
+  relayRef.set("OFF");
 });
