@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart IoT Irrigation System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1: Overview -->
+        <section class="swiper-slide home">
+          <h1>💧 Smart IoT Irrigation System</h1>
+          <p>Low-cost | Long-distance | AI-based water management</p>
+          <div class="status">
+            <span id="pumpStatus">Pump: Loading...</span>
+          </div>
+        </section>
+
+        <!-- Slide 2: Real-Time Data -->
+        <section class="swiper-slide data">
+          <h2>🌾 Live Field Data</h2>
+          <div class="data-cards">
+            <div class="card">
+              Soil Moisture: <span id="moistureVal">--%</span>
+            </div>
+            <div class="card">Temperature: <span id="tempVal">--°C</span></div>
+            <div class="card">Humidity: <span id="humidVal">--%</span></div>
+          </div>
+          <canvas id="moistureChart"></canvas>
+        </section>
+
+        <!-- Slide 3: Manual Control -->
+        <section class="swiper-slide control">
+          <h2>⚙️ Manual Control</h2>
+          <button id="pumpOn" class="btn on">Turn ON Pump</button>
+          <button id="pumpOff" class="btn off">Turn OFF Pump</button>
+        </section>
+
+        <!-- Slide 4: Water Calculations -->
+        <section class="swiper-slide calc">
+          <h2>📊 Water Requirement Calculations</h2>
+          <div class="calc-data">
+            <p>Wet Bulb Temp: <span id="wetBulb">--°C</span></p>
+            <p>Available Water: <span id="availWater">-- mm</span></p>
+            <p>Soil Water Balance: <span id="swb">--%</span></p>
+          </div>
+        </section>
+
+        <!-- Slide 5: Logs -->
+        <section class="swiper-slide logs">
+          <h2>📅 System Logs</h2>
+          <table id="logTable">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Moisture</th>
+                <th>Pump</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </body>
+</html>
