@@ -1,15 +1,3 @@
-// ✅ Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBdxGoyceOa5t4JBTgHhQdDtAVMZRevV2E",
-  authDomain: "relay-control-e746d.firebaseapp.com",
-  databaseURL:
-    "https://relay-control-e746d-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "relay-control-e746d",
-  storageBucket: "relay-control-e746d.firebasestorage.app",
-  messagingSenderId: "1007799568051",
-  appId: "1:1007799568051:web:d18954c14905d3a249d2c6",
-};
-
 // Firebase SDK imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
@@ -58,4 +46,5 @@ onValue(ref(db, "/relay/status"), (snapshot) => {
     statusBox.style.color = "white";
   }
 });
+
 
