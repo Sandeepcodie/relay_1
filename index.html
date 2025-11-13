@@ -1,35 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ESP32 Smart Relay Control</title>
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firebase Relay Control</title>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js"></script>
-  </head>
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <body>
-    <div class="container">
-      <h1 class="title">🌐 ESP32 Smart Relay Control</h1>
+<body>
+  <h1>🔥 Firebase Relay Control Dashboard</h1>
 
-      <div class="status-box">
-        <div id="indicator" class="indicator off"></div>
-        <p>Status: <span id="statusText">Loading...</span></p>
-      </div>
+  <button class="btn on" onclick="setRelay('ON')">RELAY ON</button>
+  <button class="btn off" onclick="setRelay('OFF')">RELAY OFF</button>
 
-      <div class="btn-group">
-        <button id="onBtn" class="btn on">Turn ON</button>
-        <button id="offBtn" class="btn off">Turn OFF</button>
-      </div>
+  <div id="statusBox">Loading...</div>
 
-      <footer>
-        <p>Made by <strong>Santrix</strong></p>
-      </footer>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+  <!-- Link JS (module needed for Firebase) -->
+  <script type="module" src="app.js"></script>
+</body>
 </html>
